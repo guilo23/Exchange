@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         String saida;
-         int option = -1;
-         double value;
+        int option = -1;
+        double value;
         Conversor conversor = new Conversor();
         while (true) {
             System.out.println("**********************************************************");
@@ -27,61 +27,61 @@ public class Main {
             System.out.println("7) Sair");
 
             System.out.println("**********************************************************");
-            option = Integer.parseInt(sc.nextLine());
+            try {
+                System.out.println("type a option");
+                option = Integer.parseInt(sc.nextLine());
+                if(option <= 0){
+                    System.out.println("invalid option type again");
+                    value = Double.parseDouble(sc.nextLine());
+                }
+            } catch (NumberFormatException  e) {
+                System.out.println("invalid option type again");
+
+                option = Integer.parseInt(sc.nextLine());
+
+            }
+            try {
+                System.out.println("type a value to be converted");
+                value = Double.parseDouble(sc.nextLine());
+                if(value <= 0){
+                    System.out.println("invalid Value type again");
+                    value = Double.parseDouble(sc.nextLine());
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("invalid Value type again");
+                value = Double.parseDouble(sc.nextLine());
+            }
 
 
             switch (option) {
                 case 1 -> {
-                    System.out.println("Digite  um valor para ser convertido");
-                    value = Double.parseDouble(sc.nextLine());
                     conversor.usdToArs(value);
-                    break;
                 }
-
                 case 2 -> {
-                    System.out.println("Digite  um valor para ser convertido");
-                    value = Double.parseDouble(sc.nextLine());
                     conversor.arsToUsd(value);
                 }
-
                 case 3 -> {
-                    System.out.println("Digite  um valor para ser convertido");
-                    value = Double.parseDouble(sc.nextLine());
                     conversor.usdToBrl(value);
                 }
-
                 case 4 -> {
-                    System.out.println("Digite  um valor para ser convertido");
-                    value = Double.parseDouble(sc.nextLine());
                     conversor.brlToUsd(value);
                 }
-
                 case 5 -> {
-                    System.out.println("Digite  um valor para ser convertido");
-                    value = Double.parseDouble(sc.nextLine());
                     conversor.usdToCop(value);
                 }
 
                 case 6 -> {
-                    System.out.println("Digite  um valor para ser convertido");
-                    value = Double.parseDouble(sc.nextLine());
                     conversor.copToUsd(value);
-
                 }
-
                 case 7 -> System.exit(1);
-
-                default ->  System.out.println("Choose a valid option");
-
-
             }
             System.out.println();
             System.out.println("Type any Tecla to continue or exit to Exit");
             saida = sc.nextLine();
-            if(saida.equals("exit")){
+            if (saida.equals("exit")) {
                 System.exit(1);
             }
 
         }
-        }
+    }
 }
